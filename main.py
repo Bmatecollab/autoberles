@@ -1,25 +1,23 @@
-import sys
-sys.path.append('./')
 from modules.autokolcsonzo import Autokolcsonzo
-from modules.autok import Szemelyauto, Teherauto
+from modules.szemelyauto import Szemelyauto
+from modules.teherauto import Teherauto
 
 def teszt_adatok_betoltese():
-    kolcsonzo = Autokolcsonzo("GDE Autókölcsönző")
+    kolcsonzo = Autokolcsonzo("Autókölcsönző")
 
-    auto1 = Szemelyauto("ABC123", "Toyota Corolla", 10000, 4)
-    auto2 = Szemelyauto("XYZ789", "Ford Focus", 9500, 5)
-    auto3 = Teherauto("DEF456", "Mercedes Sprinter", 15000, 2000)
+    auto1 = Szemelyauto("ABC123", "Toyota Corolla", 10000, 4, 5, 1.6)
+    auto2 = Szemelyauto("XYZ789", "Ford Focus", 9500, 5, 5, 1.8)
+    auto3 = Teherauto("DEF456", "Mercedes Sprinter", 15000, 2000, 2.2)
 
-    kolcsonzo.hozzaad_auto(auto1)
-    kolcsonzo.hozzaad_auto(auto2)
-    kolcsonzo.hozzaad_auto(auto3)
+    kolcsonzo.szemelyautok.hozzaad(auto1)
+    kolcsonzo.szemelyautok.hozzaad(auto2)
+    kolcsonzo.teherautok.hozzaad(auto3)
 
-    kolcsonzo.auto_berles("ABC123", "Kiss Gábor", "2025-04-15", "2025-04-17")
-    kolcsonzo.auto_berles("DEF456", "Nagy Anna", "2025-04-18", "2025-04-20")
-    kolcsonzo.auto_berles("XYZ789", "Tóth Péter", "2025-04-19", "2025-04-19")
+    kolcsonzo.auto_berles("ABC123", "Kiss Jolán", "2025-04-15", "2025-04-17")
+    kolcsonzo.auto_berles("DEF456", "Nagy Alma", "2025-04-18", "2025-04-20")
+    kolcsonzo.auto_berles("XYZ789", "Kis Péter", "2025-04-19", "2025-04-19")
 
     return kolcsonzo
-
 
 def menu():
     kolcsonzo = teszt_adatok_betoltese()
@@ -59,7 +57,6 @@ def menu():
             break
         else:
             print("Érvénytelen opció.")
-
 
 if __name__ == "__main__":
     menu()
